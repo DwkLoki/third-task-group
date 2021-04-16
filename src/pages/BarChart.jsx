@@ -1,11 +1,13 @@
-import { Bar } from '@reactchartjs/react-chart.js'
+import { Bar } from 'react-chartjs-2'
+
+const BarChart = () => {
 
     const data = {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: ['Merah', 'Biru', 'Kuning', 'Hijau', 'Ungu', 'Orens'],
     datasets: [
         {
         label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        data: [12, 18, 3, 5, 4.5, 3],
         backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -38,8 +40,6 @@ import { Bar } from '@reactchartjs/react-chart.js'
         ],
     },
     }
-
-const BarChart = () => {
 
     return (
         <>
