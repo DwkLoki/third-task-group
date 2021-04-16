@@ -1,3 +1,4 @@
+//import BarChart from "./BarChart"
 import ShowExcel from "./ShowExcel"
 
 const App = () => {
@@ -6,6 +7,7 @@ const App = () => {
       <h1 className="text-center">Project Third Task Group</h1>
       <hr />
       <ShowExcel />
+      {/* <BarChart /> */}
     </div>
   );
 }
