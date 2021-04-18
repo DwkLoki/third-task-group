@@ -1,33 +1,32 @@
+import { connect } from 'react-redux'
 import { Line } from 'react-chartjs-2'
 
-const data = {
-  labels: ['1', '2', '3', '4', '5', '6'],
-  datasets: [
-    {
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      fill: false,
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgba(255, 99, 132, 0.2)',
-    },
-  ],
-}
-
-const options = {
-  scales: {
-    yAxes: [
-      {
-        ticks: {
-          beginAtZero: true,
+const LineChart = (props) => {
+      const data = {
+      labels: props.label,
+      datasets: [
+        {
+          label: '# of Votes',
+          data: props.data,
+          fill: false,
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgba(255, 99, 132, 0.2)',
         },
+      ],
+    }
+
+    const options = {
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              beginAtZero: true,
+            },
+          },
+        ],
       },
-    ],
-  },
-}
+    }
 
-
-const LineChart = () => {
-    
     return (
         <>
             <Line data={data} options={options} />   
@@ -35,5 +34,12 @@ const LineChart = () => {
     )
 }
 
-export default LineChart
+const stateToProps = (globalState) => {
+    return {
+        data: globalState.data,
+        label: globalState.label
+    }
+}
+
+export default connect(stateToProps)(LineChart)
 

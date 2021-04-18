@@ -1,16 +1,17 @@
+import { connect } from 'react-redux';
 import ReactECharts from 'echarts-for-react';
 
-const EchartLine = () => {
+const EchartLine = (props) => {
     const option = {
         xAxis: {
             type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            data: props.label
         },
         yAxis: {
             type: 'value'
         },
         series: [{
-            data: [150, 230, 224, 218, 135, 147, 260],
+            data: props.data,
             type: 'line'
         }]
     };
@@ -21,4 +22,11 @@ const EchartLine = () => {
     )
 }
 
-export default EchartLine
+const stateToProps = (globalState) => {
+    return {
+        data: globalState.data,
+        label: globalState.label
+    }
+}
+
+export default connect(stateToProps)(EchartLine)
