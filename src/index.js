@@ -7,10 +7,17 @@ import { Provider } from "react-redux"
 
 const globalState = {
   data: [12, 4, 21, 6, 9, 17],
-  label: ['Merah', 'Biru', 'Kuning', 'Hijau', 'Ungu', 'Orens']
+  label: ['Merah', 'Biru', 'Kuning', 'Hijau', 'Ungu', 'Orens'],
+  dataset: []
 }
 
 const rootReducer = ( state = globalState, action) => {
+  if (action.type === "UPLOAD_FILE") {
+    return {
+      ...state,
+      dataset: action.dataset
+    }
+  }
   return state
 }
 

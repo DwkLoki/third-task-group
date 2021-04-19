@@ -2,14 +2,14 @@ import { connect } from 'react-redux'
 import { Bar } from 'react-chartjs-2'
 
 const BarChart = (props) => {
-
+    console.log(props);
     const data =  {
     // get data dan labels dari store
-    labels: props.label,
+    labels: props.dataset.map((itemHari) => itemHari.Hari),
     datasets: [
         {
         label: '# of Votes',
-        data: props.data,
+        data: props.dataset.map( (itemPenonton) => itemPenonton.JumlahPenonton ),
         backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -53,7 +53,8 @@ const BarChart = (props) => {
 const stateToProps = (globalState) => {
     return {
         data: globalState.data,
-        label: globalState.label
+        label: globalState.label,
+        dataset: globalState.dataset
     }
 }
 

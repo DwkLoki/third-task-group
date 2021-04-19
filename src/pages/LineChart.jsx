@@ -3,11 +3,11 @@ import { Line } from 'react-chartjs-2'
 
 const LineChart = (props) => {
       const data = {
-      labels: props.label,
+      labels: props.dataset.map( (itemHari) => itemHari.Hari ),
       datasets: [
         {
           label: '# of Votes',
-          data: props.data,
+          data: props.dataset.map( (itemPenonton) => itemPenonton.JumlahPenonton ),
           fill: false,
           backgroundColor: 'rgb(255, 99, 132)',
           borderColor: 'rgba(255, 99, 132, 0.2)',
@@ -37,7 +37,8 @@ const LineChart = (props) => {
 const stateToProps = (globalState) => {
     return {
         data: globalState.data,
-        label: globalState.label
+        label: globalState.label,
+        dataset: globalState.dataset
     }
 }
 

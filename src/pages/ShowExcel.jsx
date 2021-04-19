@@ -1,8 +1,9 @@
 import { useState } from "react"
 import XLSX from "xlsx"
 import Filter from './Filter'
+import { connect } from 'react-redux'
 
-const ShowExcel = () => {
+const ShowExcel = (props) => {
 
   const [file, setFile] = useState(null)
   const [dataset, setDataset] = useState(null)
@@ -35,6 +36,7 @@ const ShowExcel = () => {
 
         setTimeout(() => {
           setDataset(data);
+          props.uploadFile(data)
           // setLoadPreview(false);
         }, 500);
       };
@@ -59,4 +61,10 @@ const ShowExcel = () => {
   )
 }
 
-export default ShowExcel
+const dispatchToProps = (dispatch) => {
+  return {
+    uploadFile: (data) => dispatch({ type: "UPLOAD_FILE", dataset: data }) 
+  }
+}
+
+export default connect(null, dispatchToProps)(ShowExcel)

@@ -5,13 +5,13 @@ const EchartLine = (props) => {
     const option = {
         xAxis: {
             type: 'category',
-            data: props.label
+            data: props.dataset.map( (itemHari) => itemHari.Hari )
         },
         yAxis: {
             type: 'value'
         },
         series: [{
-            data: props.data,
+            data: props.dataset.map( (itemPenonton) => itemPenonton.JumlahPenonton ),
             type: 'line'
         }]
     };
@@ -25,7 +25,8 @@ const EchartLine = (props) => {
 const stateToProps = (globalState) => {
     return {
         data: globalState.data,
-        label: globalState.label
+        label: globalState.label,
+        dataset: globalState.dataset
     }
 }
 
